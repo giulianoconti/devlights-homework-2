@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/devlights-homework-2/static/css/main.e76c2a85.css",
-    "main.js": "/devlights-homework-2/static/js/main.4939829d.js",
+    "main.js": "/devlights-homework-2/static/js/main.45c9e369.js",
     "static/media/landingImg.png": "/devlights-homework-2/static/media/landingImg.533201a7cd80915332b9.png",
     "static/media/pokemon.png": "/devlights-homework-2/static/media/pokemon.6c6b4cb944d0eedc032f.png",
     "static/media/backgroundPokemon.png": "/devlights-homework-2/static/media/backgroundPokemon.1f1c463d2a41a1bcdd82.png",
     "index.html": "/devlights-homework-2/index.html",
     "main.e76c2a85.css.map": "/devlights-homework-2/static/css/main.e76c2a85.css.map",
-    "main.4939829d.js.map": "/devlights-homework-2/static/js/main.4939829d.js.map"
+    "main.45c9e369.js.map": "/devlights-homework-2/static/js/main.45c9e369.js.map"
   },
   "entrypoints": [
     "static/css/main.e76c2a85.css",
-    "static/js/main.4939829d.js"
+    "static/js/main.45c9e369.js"
   ]
 }
