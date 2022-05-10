@@ -17,7 +17,7 @@ export const Login = () => {
     setError("");
     try {
       await login(user.email, user.password);
-      navigate("/devlights-homework-2/");
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }

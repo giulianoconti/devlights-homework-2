@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/ui/Footer";
 import { Landing } from "./components/pages/home/Landing";
 import { List } from "./components/pages/pokemons/List";
@@ -13,13 +13,13 @@ import { AccessIfLogged } from "./components/ProtectedRoutes/AccessIfLogged";
 export const App = () => {
   return (
     <div className="background">
-      <BrowserRouter>
+      <HashRouter>
         <AuthProvider>
           <Navbar />
           <Routes>
-            <Route path="/devlights-homework-2/" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
             <Route
-              path="/devlights-homework-2/list/:pageId"
+              path="/list/:pageId"
               element={
                 <AccessIfLogged>
                   <List />
@@ -27,7 +27,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/devlights-homework-2/pokemon/:id"
+              path="/pokemon/:id"
               element={
                 <AccessIfLogged>
                   <View />
@@ -35,7 +35,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/devlights-homework-2/login"
+              path="/login"
               element={
                 <AccessIfNotLogged>
                   <Login />
@@ -43,22 +43,21 @@ export const App = () => {
               }
             />
             <Route
-              path="/devlights-homework-2/register"
+              path="/register"
               element={
                 <AccessIfNotLogged>
                   <Register />
                 </AccessIfNotLogged>
               }
             />
-             <Route path="/devlights-homework-2/pokemon/0" element={<Navigate to="/devlights-homework-2/" />} />
-             <Route path="/devlights-homework-2/pokemon/a:id" element={<Navigate to="/devlights-homework-2/" />} />
-             <Route path="/devlights-homework-2/pokemon/-:id" element={<Navigate to="/devlights-homework-2/" />} />
-            <Route path="/devlights-homework-2/list/-:pageId" element={<Navigate to="/devlights-homework-2/" />} />
-            <Route path="/devlights-homework-2/*" element={<Navigate to="/devlights-homework-2/" />} />
+             <Route path="/pokemon/0" element={<Navigate to="/" />} />
+             <Route path="/pokemon/-:id" element={<Navigate to="/" />} />
+            <Route path="/list/-:pageId" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
         </AuthProvider>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 };

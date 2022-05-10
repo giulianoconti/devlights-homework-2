@@ -18,7 +18,7 @@ export const Navbar = () => {
   return (
     <nav className="border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-800">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <NavLink to="/devlights-homework-2/" className="flex items-center">
+        <NavLink to="/" className="flex items-center">
           <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
             Pokemons
           </span>
@@ -27,7 +27,7 @@ export const Navbar = () => {
         <ul className="flex mt-4 md:space-x-8 mt-0 text-sm font-medium sm:space-x-1 flex-col md:flex-row">
           <li className="block pl-3 border-0 p-0 text-gray-400 hover:text-white">
             <NavLink
-              to="/devlights-homework-2/"
+              to="/"
               className={({ isActive }) => (isActive ? "text-white" : "")}
             >
               Home
@@ -35,7 +35,7 @@ export const Navbar = () => {
           </li>
           <li className="block pl-3 border-0 p-0 text-gray-400 hover:text-white">
             <NavLink
-              to="/devlights-homework-2/list/0"
+              to="/list/0"
               className={({ isActive }) => (isActive ? "text-white" : "")}
             >
               List of Pokemons
@@ -48,7 +48,7 @@ export const Navbar = () => {
           ) : (
             <li className="block pl-3 border-0 p-0 text-gray-400 hover:text-white">
               <NavLink
-                to="/devlights-homework-2/login"
+                to="/login"
                 className={({ isActive }) => (isActive ? "text-white" : "")}
               >
                 Login

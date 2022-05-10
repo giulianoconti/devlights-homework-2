@@ -21,7 +21,7 @@ export const Register = () => {
     setError("");
     try {
       await signup(user.email, user.password);
-      navigate("/devlights-homework-2/");
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
