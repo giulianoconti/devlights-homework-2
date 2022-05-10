@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Loading } from "../../loading/Loading";
 
 export const View = () => {
   const [loading, setLoading] = useState(true);
@@ -7,49 +8,36 @@ export const View = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const pokemonInfo = async () => {
-    setLoading(true);
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then((response) => response.json())
-      .then((response) => {
-        setPokemonCard(response);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
-  };
+  if (parseInt(id) < 1 || parseInt(id) > 898) navigate('/list/0');
 
   useEffect(() => {
+    const pokemonInfo = async () => {
+      setLoading(true);
+      await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        .then((response) => response.json())
+        .then((response) => {
+          setPokemonCard(response);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    };
     pokemonInfo();
   }, [id]);
 
-  const navigateBack = () => {
-    navigate(`/pokemon/${parseInt(id) - 1}`);
-  };
-  const navigateNext = () => {
-    navigate(`/pokemon/${parseInt(id) + 1}`);
-  };
+  const navigatePrev = () => navigate(`/pokemon/${parseInt(id) - 1}`);
 
-  if (loading) {
-    return (
-      <div className="h-screen flex text-center">
-        <div className="w-full max-w-lg m-auto">
-          <div className="bg-white shadow-md rounded px-8 pt-5 pb-5">
-            Loading...
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const navigateNext = () => navigate(`/pokemon/${parseInt(id) + 1}`);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="h-screen flex">
-      <div className="w-full max-w-lg m-auto">
+      <div className="w-full max-w-lg m-auto h-max">
         <div className="bg-white shadow-md rounded px-8 pt-5 pb-5">
           <div className="text-xl font-bold">
-            {console.log(pokemonCard)}
             {pokemonCard.name.toUpperCase()}
           </div>
           <img
@@ -57,12 +45,12 @@ export const View = () => {
             src={pokemonCard.sprites.other.dream_world.front_default}
             alt={pokemonCard.name}
           />
-          <div className="container mx-auto">
+          <div className="container mx-auto h-48">
             <div className="grid grid-cols-3 gap-2 mt-2">
               <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded bg-gray-100 py-2">
                 <div className="flex text-sm m-auto font-bold">Types: </div>
                 <h2 className="flex text-sm m-auto">
-                  {pokemonCard.types[0]?.type.name}
+                  {pokemonCard.types[0].type.name}
                 </h2>
                 <h2 className="flex text-sm m-auto">
                   {pokemonCard.types[1]?.type.name}
@@ -73,18 +61,22 @@ export const View = () => {
               </div>
 
               <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded bg-gray-100 py-2">
-                <div className="flex text-sm m-auto font-bold">Height: </div>
-                <div className="flex text-sm m-auto">{pokemonCard.height}</div>
+                <div className="flex text-sm m-auto font-bold">HP: </div>
+                <div className="flex text-sm m-auto">
+                  {pokemonCard.stats[0].base_stat}
+                </div>
               </div>
               <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded bg-gray-100 py-2">
-                <div className="flex text-sm m-auto font-bold">Weight: </div>
-                <div className="flex text-sm m-auto">{pokemonCard.weight}</div>
+                <div className="flex text-sm m-auto font-bold">Attack: </div>
+                <div className="flex text-sm m-auto">
+                  {pokemonCard.stats[1].base_stat}
+                </div>
               </div>
 
               <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded bg-gray-100 py-2">
                 <div className="flex text-sm m-auto font-bold">Abilities: </div>
                 <div className="flex text-sm m-auto">
-                  {pokemonCard.abilities[0]?.ability.name}
+                  {pokemonCard.abilities[0].ability.name}
                 </div>
                 <div className="flex text-sm m-auto">
                   {pokemonCard.abilities[1]?.ability.name}
@@ -93,20 +85,35 @@ export const View = () => {
                   {pokemonCard.abilities[2]?.ability.name}
                 </div>
               </div>
+              <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded bg-gray-100 py-2">
+                <div className="flex text-sm m-auto font-bold">Defense: </div>
+                <div className="flex text-sm m-auto">
+                  {pokemonCard.stats[2].base_stat}
+                </div>
+              </div>
+              <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded bg-gray-100 py-2">
+                <div className="flex text-sm m-auto font-bold">Speed: </div>
+                <div className="flex text-sm m-auto">
+                  {pokemonCard.stats[5].base_stat}
+                </div>
+              </div>
             </div>
           </div>
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex justify-between mt-4">
             <button
-              className="text-sm font-bold text-gray-600"
-              onClick={navigateBack}
+              className={`text-sm font-bold text-gray-${
+                pokemonCard.id === 1 ? "400" : "700"
+              }`}
+              onClick={navigatePrev}
+              disabled={id === "1"}
             >
-              {"<- back"}
+              {"<- Previous"}
             </button>
             <button
-              className="text-sm font-bold text-gray-600"
+              className="text-sm font-bold text-gray-700"
               onClick={navigateNext}
             >
-              {"next ->"}
+              {"Next ->"}
             </button>
           </div>
         </div>

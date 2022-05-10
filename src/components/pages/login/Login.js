@@ -1,32 +1,44 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/authContext";
 import { Alert } from "./Alert";
 
 export const Login = () => {
   const [error, setError] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const { login, resetPassword } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.password.value;
-    if (email === "test@test.com") {
-      if (password === "test123") {
-        window.localStorage.setItem("loggedIn", true);
-        window.localStorage.setItem("email", email);
-        window.localStorage.setItem("password", password);
-        navigate("/list");
-      } else {
-        setError("Password is incorrect");
-      }
-    } else {
-      setError("Email is incorrect");
+    try {
+      await login(user.email, user.password);
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
     }
   };
 
+  const handleResetPassword = async () => {
+    if (!user.email) return setError("Please enter your email");
+    try {
+      await resetPassword(user.email);
+      setError("Check your email");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleChange = ({ target: { name, value } }) => {
+    setUser({ ...user, [name]: value });
+  };
+
   return (
-    <section className="h-screen">
+    <div className="h-screen bg-gray-900">
       <div className="container px-6 py-12 h-full m-auto">
         <div className="flex justify-center items-center flex-wrap h-full g-6">
           <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
@@ -34,7 +46,10 @@ export const Login = () => {
           </div>
           <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
             {error && <Alert message={error} />}
-            <form onSubmit={handleSubmit}>
+            <form className="bg-white p-4 rounded" onSubmit={handleSubmit}>
+              <h2 className="block text-gray-700 text-xl text-center font-fold mb-4">
+                Form to Login
+              </h2>
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-fold mb-2"
@@ -49,7 +64,7 @@ export const Login = () => {
                   name="email"
                   id="email"
                   placeholder="youremail@company.ltd"
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
@@ -66,16 +81,28 @@ export const Login = () => {
                   name="password"
                   id="password"
                   placeholder="********"
-                  // onChange={handleChange}
+                  onChange={handleChange}
                 />
               </div>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-sm py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Login
-              </button>
+              <div className="flex items-center justify-between">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-sm py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  Login
+                </button>
+                <a
+                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700"
+                  href="#!"
+                  onClick={handleResetPassword}
+                >
+                  Forgot Password?
+                </a>
+              </div>
             </form>
+            <p className="my-4 text-sm flex justify-between px-3 text-white">
+              Don't have an Account? <Link to="/register">Register</Link>
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
