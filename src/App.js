@@ -9,6 +9,7 @@ import { AuthProvider } from "./context/authContext";
 import { Register } from "./components/pages/login/Register";
 import { AccessIfNotLogged } from "./components/ProtectedRoutes/AccessIfNotLogged";
 import { AccessIfLogged } from "./components/ProtectedRoutes/AccessIfLogged";
+import { RecoverPassword } from "./components/pages/login/RecoverPassword";
 
 export const App = () => {
   return (
@@ -50,8 +51,16 @@ export const App = () => {
                 </AccessIfNotLogged>
               }
             />
-             <Route path="/pokemon/0" element={<Navigate to="/" />} />
-             <Route path="/pokemon/-:id" element={<Navigate to="/" />} />
+            <Route
+              path="/recover-password"
+              element={
+                <AccessIfNotLogged>
+                  <RecoverPassword />
+                </AccessIfNotLogged>
+              }
+            />
+            <Route path="/pokemon/0" element={<Navigate to="/" />} />
+            <Route path="/pokemon/-:id" element={<Navigate to="/" />} />
             <Route path="/list/-:pageId" element={<Navigate to="/" />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

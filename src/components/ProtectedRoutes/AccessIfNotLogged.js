@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { Loading } from "../loading/Loading";
 
-
 export const AccessIfNotLogged = ({ children }) => {
   const { user, loadingUser } = useAuth();
 

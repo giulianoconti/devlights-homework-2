@@ -10,7 +10,7 @@ export const Login = () => {
     email: "",
     password: "",
   });
-  const { login, resetPassword } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,16 +19,6 @@ export const Login = () => {
     try {
       await login(user.email, user.password);
       navigate("/");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const handleResetPassword = async () => {
-    if (!user.email) return setError("Please enter your email");
-    try {
-      await resetPassword(user.email);
-      setError("Check your email");
     } catch (error) {
       setError(error.message);
     }
@@ -89,13 +79,12 @@ export const Login = () => {
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-sm py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                   Login
                 </button>
-                <a
+                <Link
                   className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700"
-                  href="/"
-                  onClick={handleResetPassword}
+                  to="/recover-password"
                 >
                   Forgot Password?
-                </a>
+                </Link>
               </div>
             </form>
             <p className="my-4 text-sm flex justify-between px-3 text-white">

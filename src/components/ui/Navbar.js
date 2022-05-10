@@ -56,7 +56,9 @@ export const Navbar = () => {
             </li>
           )}
           {user && (
-            <li className="block pl-3 border-0 p-0 text-blue-500 cursor-default">{user.email}</li>
+            <li className="block pl-3 border-0 p-0 text-blue-500 cursor-default">
+              {user.email}
+            </li>
           )}
         </ul>
       </div>

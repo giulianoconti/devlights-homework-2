@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "devlights-homework2",
   storageBucket: "devlights-homework2.appspot.com",
   messagingSenderId: "631964255349",
-  appId: "1:631964255349:web:cbd597a74bf3f2fa79e43c"
+  appId: "1:631964255349:web:cbd597a74bf3f2fa79e43c",
 };
 
 // Initialize Firebase
