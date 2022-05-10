@@ -8,7 +8,7 @@ export const AccessIfLogged = ({ children }) => {
 
   if (loadingUser) return <Loading />;
 
-  if (!user) return <Navigate to="/login" />;
+  if (!user) return <Navigate to="/devlights-homework-2/login" />;
 
   return <>{children}</>;
 };

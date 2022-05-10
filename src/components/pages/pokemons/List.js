@@ -29,9 +29,9 @@ export const List = () => {
     initPokemons();
   }, [pageId]);
 
-  const navigatePrev = () => navigate(`/list/${parseInt(pageId) - 1}`);
+  const navigatePrev = () => navigate(`/devlights-homework-2/list/${parseInt(pageId) - 1}`);
 
-  const navigateNext = () => navigate(`/list/${parseInt(pageId) + 1}`);
+  const navigateNext = () => navigate(`/devlights-homework-2/list/${parseInt(pageId) + 1}`);
 
   if (loading) return <Loading />;
 

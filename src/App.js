@@ -17,9 +17,9 @@ export const App = () => {
         <AuthProvider>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/devlights-homework-2/" element={<Landing />} />
             <Route
-              path="/list/:pageId"
+              path="/devlights-homework-2/list/:pageId"
               element={
                 <AccessIfLogged>
                   <List />
@@ -27,7 +27,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/pokemon/:id"
+              path="/devlights-homework-2/pokemon/:id"
               element={
                 <AccessIfLogged>
                   <View />
@@ -35,7 +35,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/login"
+              path="/devlights-homework-2/login"
               element={
                 <AccessIfNotLogged>
                   <Login />
@@ -43,18 +43,18 @@ export const App = () => {
               }
             />
             <Route
-              path="/register"
+              path="/devlights-homework-2/register"
               element={
                 <AccessIfNotLogged>
                   <Register />
                 </AccessIfNotLogged>
               }
             />
-             <Route path="/pokemon/0" element={<Navigate to="/" />} />
-             <Route path="/pokemon/a:id" element={<Navigate to="/" />} />
-             <Route path="/pokemon/-:id" element={<Navigate to="/" />} />
-            <Route path="/list/-:pageId" element={<Navigate to="/" />} />
-            <Route path="*" element={<Navigate to="/" />} />
+             <Route path="/devlights-homework-2/pokemon/0" element={<Navigate to="/devlights-homework-2/" />} />
+             <Route path="/devlights-homework-2/pokemon/a:id" element={<Navigate to="/devlights-homework-2/" />} />
+             <Route path="/devlights-homework-2/pokemon/-:id" element={<Navigate to="/devlights-homework-2/" />} />
+            <Route path="/devlights-homework-2/list/-:pageId" element={<Navigate to="/devlights-homework-2/" />} />
+            <Route path="/devlights-homework-2/*" element={<Navigate to="/devlights-homework-2/" />} />
           </Routes>
           <Footer />
         </AuthProvider>

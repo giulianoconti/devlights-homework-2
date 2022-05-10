@@ -8,7 +8,7 @@ export const View = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  if (parseInt(id) < 1 || parseInt(id) > 898) navigate('/list/0');
+  if (parseInt(id) < 1 || parseInt(id) > 898) navigate('/devlights-homework-2/list/0');
 
   useEffect(() => {
     const pokemonInfo = async () => {
