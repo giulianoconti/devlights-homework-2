@@ -30,9 +30,9 @@ export const Register = () => {
 
   return (
     <div className="h-screen bg-gray-900">
-      <div className="container px-6 py-12 h-full m-auto">
+      <div className="container px-6 py-1 h-full m-auto">
         <div className="flex justify-center items-center flex-wrap h-full g-6">
-          <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
+          <div className="md:w-8/12 lg:w-6/12 mb-1 md:mb-0">
             <img src={pokemonImg} className="w-full" alt="logo" />
           </div>
           <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
