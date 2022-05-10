@@ -1,3 +1,5 @@
+import landingImg from "./img/landingImg.png";
+
 export const Landing = () => {
   return (
     <div className="h-screen flex text-center bg-gray-900">
@@ -5,7 +7,7 @@ export const Landing = () => {
         <div className="bg-white shadow-md rounded">
           <img
             className="object-contain w-full rounded-t"
-            src={`./img/landingImg.png`}
+            src={landingImg}
             alt="imgHome"
           />
           <h1 className="text-4xl p-8">Pokemon Finder</h1>

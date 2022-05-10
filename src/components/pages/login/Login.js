@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/authContext";
 import { Alert } from "./Alert";
+import pokemonImg from "./img/pokemon.png";
 
 export const Login = () => {
   const [error, setError] = useState("");
@@ -42,7 +43,7 @@ export const Login = () => {
       <div className="container px-6 py-12 h-full m-auto">
         <div className="flex justify-center items-center flex-wrap h-full g-6">
           <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-            <img src="./img/pokemon.png" className="w-full" alt="logo" />
+            <img src={pokemonImg} className="w-full" alt="logo" />
           </div>
           <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
             {error && <Alert message={error} />}
