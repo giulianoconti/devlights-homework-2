@@ -91,7 +91,7 @@ export const Login = () => {
                 </button>
                 <a
                   className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700"
-                  href="#!"
+                  href="/"
                   onClick={handleResetPassword}
                 >
                   Forgot Password?
