@@ -31,11 +31,11 @@ export const Login = () => {
   return (
     <div className="h-screen bg-gray-900">
       <div className="container px-6 py-1 h-full m-auto">
-        <div className="flex justify-center items-center flex-wrap h-full g-6">
-          <div className="md:w-8/12 lg:w-6/12 mb-1 md:mb-0">
-            <img src={pokemonImg} className="w-full" alt="logo" />
+        <div className="flex justify-center items-center flex-wrap h-full">
+          <div className="mb-1">
+            <img className="w-full h-48 sm:h-auto" src={pokemonImg} alt="logo" />
           </div>
-          <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
+          <div className="md:w-8/12 lg:w-5/12 xl:ml-20">
             {error && <Alert message={error} />}
             <form className="bg-white p-4 rounded" onSubmit={handleSubmit}>
               <h2 className="block text-gray-700 text-xl text-center font-fold mb-4">
