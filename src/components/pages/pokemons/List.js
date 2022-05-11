@@ -45,7 +45,7 @@ export const List = () => {
             <Link to={"/pokemon/" + pokemonId} key={pokemonId}>
               <div className="flex flex-col justify-center text-6xl border-2 border-gray-300 rounded-xl p-6 bg-gray-100 cursor-pointer hover:bg-gray-300">
                 <h1 className="flex text-xl m-auto">{pokemon.name}</h1>
-                <img className="m-auto" src={img} alt={pokemon.name}></img>
+                <img className="m-auto h-80 md:h-80 lg:h-48 xl:h-64" src={img} alt={pokemon.name}></img>
               </div>
             </Link>
           );
