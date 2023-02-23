@@ -2,4 +2,4 @@
 
 <h4>Agregado extra: login/register utilizando firebase</h4>
 
-https://giuliannt.github.io/devlights-homework-2/
+https://giulianoconti.github.io/devlights-homework-2/
