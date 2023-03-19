@@ -25,4 +25,4 @@ Web application where by registering you can perform a search for different poke
 
 ### Link
 
-* https://giulianoconti.github.io/devlights-homework-2/
+https://giulianoconti.github.io/devlights-homework-2/
