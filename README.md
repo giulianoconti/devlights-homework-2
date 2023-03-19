@@ -7,9 +7,9 @@
 
 ## Pokemon Finder
 
-## Segunda tarea de Devlights Bootcamps - ReactJs
+## Devlights Bootcamps Second Assignment - ReactJs
 
-### Agregado extra: login/register utilizando firebase
+### Added extra: login/register using firebase
 
 ![Sokoban](https://raw.githubusercontent.com/giulianoconti/api/main/imagesProjects/images_1920x1080/pokemon.webp?raw=true)
 
