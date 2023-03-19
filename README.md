@@ -21,6 +21,7 @@ Web application where by registering you can perform a search for different poke
 
 * [React](https://reactjs.org/)
 * [Firebase](https://firebase.google.com/)
+* [Tailwind](https://tailwindcss.com/)
 
 ### Link
 
